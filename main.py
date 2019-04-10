@@ -10,8 +10,14 @@ debug = True
 # Print Dataset files
 if debug: print(os.listdir('./Dataset'))
 
-x = np.loadtxt(open("./Dataset/Admission_Predict_Ver1.1.csv", "rb"), delimiter=",", skiprows=1)
-print(x)
+# Input dataset
+dataset = np.loadtxt(open("./Dataset/Admission_Predict_Ver1.1.csv", "rb"), delimiter=",", skiprows=1)
+if debug: print(dataset)
+
+# Clear the first column 
+datset = np.delete(dataset, 1, 1)
+if debug: print(dataset)
+print(dataset.shape)
 
 # BEHOLD THE OLD CODE
 # df1 = pd.read_csv('./Dataset/Admission_Predict.csv', delimiter=',')
