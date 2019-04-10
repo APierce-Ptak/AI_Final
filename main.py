@@ -5,14 +5,13 @@ import numpy as np # linear algebra
 import os # accessing directory structure
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
-debug = False
+debug = True
 
 # Print Dataset files
 if debug: print(os.listdir('./Dataset'))
 
-
-
-
+x = np.loadtxt(open("./Dataset/Admission_Predict_Ver1.1.csv", "rb"), delimiter=",", skiprows=1)
+print(x)
 
 # BEHOLD THE OLD CODE
 # df1 = pd.read_csv('./Dataset/Admission_Predict.csv', delimiter=',')
