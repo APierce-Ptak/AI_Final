@@ -48,11 +48,17 @@ print(Y_train)
 print("Y test")
 print(Y_test)
 
-Yreshape = Y.reshape(-1,1)
-scalerY = preprocessing.StandardScaler().fit(Yreshape) 
-scalerX = preprocessing.StandardScaler().fit(X)
-print("Scalar is: ", scalerX)
-print("Scalar is: ", scalerY)
+Y_train_reshape = Y_train.reshape(-1,1)
+scalerX_train = preprocessing.StandardScaler().fit(X_train) 
+scalerY_train = preprocessing.StandardScaler().fit(y_train_reshape)
+
+Y_test_reshape = Y_test.reshape(-1,1)
+scalerX_test = preprocessing.StandardScaler().fit(X_test) 
+scalerY_test = preprocessing.StandardScaler().fit(y_test_reshape)
+
+#print(scalerX_train.mean_)
+#print(scalerX_train.scale_)
+#print(scalerX_train.)
 
 X, Y = np.arange(10).reshape((5, 2)), range(5)
 
