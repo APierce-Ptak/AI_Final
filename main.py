@@ -48,8 +48,41 @@ print(Y_train)
 print("Y test")
 print(Y_test)
 
-# X, Y = np.arange(10).reshape((5, 2)), range(5)
+Yreshape = Y.reshape(-1,1)
+scalerY = preprocessing.StandardScaler().fit(Yreshape) 
+scalerX = preprocessing.StandardScaler().fit(X)
+print("Scalar is: ", scalerX)
+print("Scalar is: ", scalerY)
+
+X, Y = np.arange(10).reshape((5, 2)), range(5)
 
 # neigh = KNeighborsRegressor(n_neighbors=2)
 # neigh.fit(X, Y) 
 # print(neigh.predict([[0.8]]))
+print(X)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
