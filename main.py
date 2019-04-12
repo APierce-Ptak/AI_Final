@@ -5,7 +5,7 @@ import numpy as np # linear algebra
 import os # accessing directory structure
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
-debug = True
+debug = False
 
 # Print Dataset files
 if debug: print(os.listdir('./Dataset'))
@@ -15,9 +15,16 @@ dataset = np.loadtxt(open("./Dataset/Admission_Predict_Ver1.1.csv", "rb"), delim
 if debug: print(dataset)
 
 # Clear the first column 
-datset = np.delete(dataset, 1, 1)
+dataset = np.delete(dataset, 0, 1)
 if debug: print(dataset)
+
+# Print the shape of the dataset
 print(dataset.shape)
+
+
+
+
+
 
 # BEHOLD THE OLD CODE
 # df1 = pd.read_csv('./Dataset/Admission_Predict.csv', delimiter=',')
