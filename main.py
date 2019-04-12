@@ -1,5 +1,6 @@
 from mpl_toolkits.mplot3d import Axes3D
 from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsRegressor
 import matplotlib.pyplot as plt # plotting
 import numpy as np # linear algebra
 import os # accessing directory structure
@@ -21,8 +22,32 @@ if debug: print(dataset)
 # Print the shape of the dataset
 print(dataset.shape)
 
+# X AND Y CODE GOES HERE0
+i = 0
+outputs = []
+inputs = datasetapierce
+#Fills output array with last column of inputs 
+for row in dataset:
+
+  print("BeforeRow ",i," \n",row)
+  sizeOfRow = len(row)-1
+  outputs.append(row[sizeOfRow])
+
+  print("\n\n\n\n\n")
+  
+  i+=1
+#input has its last column removed
+inputs = np.delete(dataset, 7, 1)
+
+print("Inputs:\n", inputs)
+print("\n\n\n")
+print("LastColumn:\n", outputs)
 
 
+#################################
+neigh = KNeighborsRegressor(n_neighbors=2)
+neigh.fit(X, y) 
+print(neigh.predict([[1.5]]))
 
 
 
