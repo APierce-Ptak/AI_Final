@@ -1,5 +1,5 @@
 from mpl_toolkits.mplot3d import Axes3D
-from sklearn.preprocessing import StandardScaler
+from sklearn import preprocessing
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt # plotting
@@ -7,7 +7,12 @@ import numpy as np # linear algebra
 import os # accessing directory structure
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
-debug = True
+#######################
+#  Nearest Neighbor   #
+#  Linear Regression  #
+#    Neural Net       #
+#######################
+debug = False
 
 # Print Dataset files
 if debug: print(os.listdir('./Dataset'))
@@ -26,12 +31,22 @@ print(dataset.shape)
 # The X and Y axes of the data X what we know Y what we want to predict
 X = dataset[:,0:7]
 Y = dataset[:, 7]
-if debug: print(X)
-if debug: print(Y)
+print("X Array")
+print(X)
+print("Y Array")
+print(Y)
 
 # Test and training data set
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.25, random_state=None)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.25, random_state=None)
 
+print("X train")
+print(X_train)
+print("X test")
+print(X_test)
+print("Y train")
+print(Y_train)
+print("Y test")
+print(Y_test)
 
 # X, Y = np.arange(10).reshape((5, 2)), range(5)
 
