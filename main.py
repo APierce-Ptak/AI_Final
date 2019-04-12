@@ -1,4 +1,5 @@
 from mpl_toolkits.mplot3d import Axes3D
+from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsRegressor
 import matplotlib.pyplot as plt # plotting
@@ -50,8 +51,42 @@ X = dataset[:,0:7]
 Y = dataset[:, 7]
 print(X)
 print(Y)
+
+Yreshape = Y.reshape(-1,1)
+scalerY = preprocessing.StandardScaler().fit(Yreshape) 
+scalerX = preprocessing.StandardScaler().fit(X)
+print("Scalar is: ", scalerX)
+print("Scalar is: ", scalerY)
+
 X, Y = np.arange(10).reshape((5, 2)), range(5)
 
 neigh = KNeighborsRegressor(n_neighbors=2)
 neigh.fit(X, Y) 
 # print(neigh.predict([[0.8]]))
+print(X)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
