@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt # plotting
 import numpy as np # linear algebra
 import os # accessing directory structure
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+from sklearn.neural_network import MLPClassifier #For neural net
 
 #######################
 #  Nearest Neighbor   #
@@ -50,27 +51,34 @@ print(Y_test)
 
 Y_train_reshape = Y_train.reshape(-1,1)
 scalerX_train = preprocessing.StandardScaler().fit(X_train) 
-scalerY_train = preprocessing.StandardScaler().fit(y_train_reshape)
+scalerY_train = preprocessing.StandardScaler().fit(Y_train_reshape)
 
 Y_test_reshape = Y_test.reshape(-1,1)
 scalerX_test = preprocessing.StandardScaler().fit(X_test) 
-scalerY_test = preprocessing.StandardScaler().fit(y_test_reshape)
+scalerY_test = preprocessing.StandardScaler().fit(Y_test_reshape)
 
 #print(scalerX_train.mean_)
 #print(scalerX_train.scale_)
 #print(scalerX_train.)
 
-X, Y = np.arange(10).reshape((5, 2)), range(5)
+#X, Y = np.arange(10).reshape((5, 2)), range(5)
 
 # neigh = KNeighborsRegressor(n_neighbors=2)
 # neigh.fit(X, Y) 
 # print(neigh.predict([[0.8]]))
-print(X)
 
 
+#############################
+#            MLP            #
+#############################
+mlp = MLPClassifier()
+net = mlp.fit(scalerX_train, scalerY_train)
 
+predictions = net.predict(scalerX_test)
 
-
+score = net.score(scalerX_test, scalerY_test)
+print("MLP Accuracy Score: ", score)
+print("MLP Iterations: ", net.n_iter_)
 
 
 
