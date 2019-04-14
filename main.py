@@ -1,4 +1,5 @@
 from mpl_toolkits.mplot3d import Axes3D
+from sklearn.preprocessing import StandardScaler
 from sklearn import preprocessing
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split
@@ -6,7 +7,8 @@ import matplotlib.pyplot as plt # plotting
 import numpy as np # linear algebra
 import os # accessing directory structure
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-from sklearn.neural_network import MLPClassifier #For neural net
+from sklearn.neural_network import MLPRegressor #For neural net
+import sys
 
 #######################
 #  Nearest Neighbor   #
@@ -14,6 +16,9 @@ from sklearn.neural_network import MLPClassifier #For neural net
 #    Neural Net       #
 #######################
 debug = False
+
+#Stops truncating the data when printed
+np.set_printoptions(threshold=sys.maxsize)
 
 # Print Dataset files
 if debug: print(os.listdir('./Dataset'))
@@ -29,6 +34,7 @@ if debug: print(dataset)
 # Print the shape of the dataset
 print(dataset.shape)
 
+#Left out serial number and acceptance
 labels = ["GRE Score","TOEFL Score","University Rating","SOP","LOR" ,"CGPA","Research"]
 
 # The X and Y axes of the data X what we know Y what we want to predict
@@ -51,24 +57,36 @@ print(Y_train)
 print("Y test")
 print(Y_test)
 
-Y_train_reshape = Y_train.reshape(-1,1)
-scalerX_train = preprocessing.StandardScaler().fit(X_train) 
-scalerY_train = preprocessing.StandardScaler().fit(Y_train_reshape)
+scaler = StandardScaler()
+scaler.fit(X_train)
 
-Y_test_reshape = Y_test.reshape(-1,1)
-scalerX_test = preprocessing.StandardScaler().fit(X_test) 
-scalerY_test = preprocessing.StandardScaler().fit(Y_test_reshape)
+X_train = scaler.transform(X_train)
+X_test = scaler.transform(X_test)
+
+print("AFTER SCALING X TRAINING DATA:")
+print(X_train)
+
+print("AFTER SCALING X TESTING DATA:")
+print(X_test)
+
+#Y_train_reshape = Y_train.reshape(-1,1)
+#scalerX_train = preprocessing.StandardScaler().fit(X_train) 
+#scalerY_train = preprocessing.StandardScaler().fit(Y_train_reshape)
+
+#Y_test_reshape = Y_test.reshape(-1,1)
+#scalerX_test = preprocessing.StandardScaler().fit(X_test) 
+#scalerY_test = preprocessing.StandardScaler().fit(Y_test_reshape)
 
 #print("MEAN: ", scalerX_train.mean_)
 #print("SCALE: ", scalerX_train.scale_)
 #print(scalerX_train.transform(X_train))
-X_train = scalerX_train.transform(X_train)
-Y_train = scalerY_train.transform(Y_train)
-X_test = scalerX_test.transform(X_test)
-Y_test = scalerY_test.transform(Y_test)
+#X_train = scalerX_train.transform(X_train)
+#Y_train = scalerY_train.transform(Y_train)
+#X_test = scalerX_test.transform(X_test)
+#Y_test = scalerY_test.transform(Y_test)
 
-Y_train = Y_train.reshape(-1,1)
-Y_test = Y_test.reshape(-1,1)
+#Y_train = Y_train.reshape(1,-1)
+#Y_test = Y_test.reshape(-1,1)
 
 #X, Y = np.arange(10).reshape((5, 2)), range(5)
 
@@ -80,7 +98,7 @@ Y_test = Y_test.reshape(-1,1)
 #############################
 #            MLP            #
 #############################
-mlp = MLPClassifier()
+mlp = MLPRegressor(verbose = True, hidden_layer_sizes=(500,500,500,500,500,1000))
 net = mlp.fit(X_train, Y_train)
 
 predictions = net.predict(X_test)
