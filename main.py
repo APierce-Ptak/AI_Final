@@ -29,6 +29,8 @@ if debug: print(dataset)
 # Print the shape of the dataset
 print(dataset.shape)
 
+labels = ["GRE Score","TOEFL Score","University Rating","SOP","LOR" ,"CGPA","Research"]
+
 # The X and Y axes of the data X what we know Y what we want to predict
 X = dataset[:,0:7]
 Y = dataset[:, 7]
@@ -57,9 +59,16 @@ Y_test_reshape = Y_test.reshape(-1,1)
 scalerX_test = preprocessing.StandardScaler().fit(X_test) 
 scalerY_test = preprocessing.StandardScaler().fit(Y_test_reshape)
 
-#print(scalerX_train.mean_)
-#print(scalerX_train.scale_)
-#print(scalerX_train.)
+#print("MEAN: ", scalerX_train.mean_)
+#print("SCALE: ", scalerX_train.scale_)
+#print(scalerX_train.transform(X_train))
+X_train = scalerX_train.transform(X_train)
+Y_train = scalerY_train.transform(Y_train)
+X_test = scalerX_test.transform(X_test)
+Y_test = scalerY_test.transform(Y_test)
+
+Y_train = Y_train.reshape(-1,1)
+Y_test = Y_test.reshape(-1,1)
 
 #X, Y = np.arange(10).reshape((5, 2)), range(5)
 
@@ -72,11 +81,11 @@ scalerY_test = preprocessing.StandardScaler().fit(Y_test_reshape)
 #            MLP            #
 #############################
 mlp = MLPClassifier()
-net = mlp.fit(scalerX_train, scalerY_train)
+net = mlp.fit(X_train, Y_train)
 
-predictions = net.predict(scalerX_test)
+predictions = net.predict(X_test)
 
-score = net.score(scalerX_test, scalerY_test)
+score = net.score(X_test, Y_test)
 print("MLP Accuracy Score: ", score)
 print("MLP Iterations: ", net.n_iter_)
 
