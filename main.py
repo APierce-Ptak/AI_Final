@@ -148,11 +148,11 @@ if testLinReg:
 #############################
 #       Score Summary       #
 #############################
-print("MLP Accuracy Score: ", scoreMLP)
+print("MLP Accuracy Score:\t", scoreMLP)
 
-print("KNN Accuracy Score: ", scoreKNN)
+print("KNN Accuracy Score:\t", scoreKNN)
 
-print("LinReg Accuracy Score: ", scoreLinReg)
+print("LinReg Accuracy Score:\t", scoreLinReg)
 
 
 
