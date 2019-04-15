@@ -1,3 +1,4 @@
+from __future__ import print_function
 from mpl_toolkits.mplot3d import Axes3D
 from sklearn.preprocessing import StandardScaler
 from sklearn import preprocessing
@@ -9,6 +10,7 @@ import os # accessing directory structure
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from sklearn.neural_network import MLPRegressor #For neural net
 from sklearn.linear_model import LinearRegression
+
 import sys
 
 #######################
