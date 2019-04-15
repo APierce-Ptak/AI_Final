@@ -22,6 +22,7 @@ import sys
 
 ##########DEBUG VARS
 debug = False
+
 testMLP = False
 testKNN = False
 testLinReg = False
