@@ -24,7 +24,7 @@ import sys
 debug = False
 
 # If these are false they output fake data
-testMLP = True  
+testMLP = True
 testKNN = True
 testLinReg = True
 
@@ -44,7 +44,7 @@ if debug: print(os.listdir('./Dataset'))
 dataset = np.loadtxt(open("./Dataset/Admission_Predict_Ver1.1.csv", "rb"), delimiter=",", skiprows=1)
 if debug: print(dataset)
 
-# Clear the first column 
+# Clear the first column
 dataset = np.delete(dataset, 0, 1)
 if debug: print(dataset)
 
@@ -65,7 +65,7 @@ if debug:
   print(Y)
 
 # Test and training data set
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.25, random_state=None)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.25, random_state=42)
 
 if debug:
   print("X train")
@@ -94,7 +94,7 @@ if debug:
 #            MLP            #
 #############################
 if testMLP:
-  mlp = MLPRegressor(hidden_layer_sizes=(50,50,550,500,500,1000),activation="identity", solver="sgd",learning_rate="adaptive",early_stopping=False)
+  mlp = MLPRegressor(hidden_layer_sizes=(200,),activation="identity", solver="sgd",learning_rate="adaptive",alpha=0.97,early_stopping=False,max_iter = 500, verbose=True,random_state=42)
   net = mlp.fit(X_train, Y_train)
 
   predictions = net.predict(X_test)
@@ -108,7 +108,7 @@ if testMLP:
 #############################
 if testKNN:
   neigh = KNeighborsRegressor(n_neighbors=7)
-  neigh.fit(X_train, Y_train) 
+  neigh.fit(X_train, Y_train)
 
   predictionsKNN = neigh.predict(X_test)
   scoreKNN = neigh.score(X_test, Y_test)
@@ -134,9 +134,3 @@ print("MLP Accuracy Score:\t", scoreMLP)
 print("KNN Accuracy Score:\t", scoreKNN)
 
 print("LinReg Accuracy Score:\t", scoreLinReg)
-
-
-
-
-
-
