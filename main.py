@@ -18,7 +18,18 @@ import sys
 #  Linear Regression  #
 #    Neural Net       #
 #######################
+
+
+##########DEBUG VARS
 debug = False
+testMLP = False
+testKNN = False
+testLinReg = False
+
+scoreMLP = -999
+scoreKNN = -999
+scoreLinReg = -999
+
 
 #Stops truncating the data when printed
 np.set_printoptions(threshold=sys.maxsize)
@@ -43,22 +54,25 @@ labels = ["GRE Score","TOEFL Score","University Rating","SOP","LOR" ,"CGPA","Res
 # The X and Y axes of the data X what we know Y what we want to predict
 X = dataset[:,0:7]
 Y = dataset[:, 7]
-print("X Array")
-print(X)
-print("Y Array")
-print(Y)
+
+if debug:
+  print("X Array")
+  print(X)
+  print("Y Array")
+  print(Y)
 
 # Test and training data set
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.25, random_state=None)
 
-print("X train")
-print(X_train)
-print("X test")
-print(X_test)
-print("Y train")
-print(Y_train)
-print("Y test")
-print(Y_test)
+if debug:
+  print("X train")
+  print(X_train)
+  print("X test")
+  print(X_test)
+  print("Y train")
+  print(Y_train)
+  print("Y test")
+  print(Y_test)
 
 scaler = StandardScaler()
 scaler.fit(X_train)
@@ -66,11 +80,12 @@ scaler.fit(X_train)
 X_train = scaler.transform(X_train)
 X_test = scaler.transform(X_test)
 
-print("AFTER SCALING X TRAINING DATA:")
-print(X_train)
+if debug:
+  print("AFTER SCALING X TRAINING DATA:")
+  print(X_train)
 
-print("AFTER SCALING X TESTING DATA:")
-print(X_test)
+  print("AFTER SCALING X TESTING DATA:")
+  print(X_test)
 
 #Y_train_reshape = Y_train.reshape(-1,1)
 #scalerX_train = preprocessing.StandardScaler().fit(X_train) 
@@ -97,44 +112,47 @@ print(X_test)
 #############################
 #            MLP            #
 #############################
-mlp = MLPRegressor(hidden_layer_sizes=(500,500,500,500,500,1000))
-net = mlp.fit(X_train, Y_train)
+if testMLP:
+  mlp = MLPRegressor(hidden_layer_sizes=(500,500,500,500,500,1000))
+  net = mlp.fit(X_train, Y_train)
 
-predictions = net.predict(X_test)
+  predictions = net.predict(X_test)
 
-score = net.score(X_test, Y_test)
-print("MLP Iterations: ", net.n_iter_)
+  scoreMLP = net.score(X_test, Y_test)
+  print("MLP Iterations: ", net.n_iter_)
 
 
 #############################
 #            KNN            #
 #############################
-neigh = KNeighborsRegressor(n_neighbors=2)
-neigh.fit(X_train, Y_train) 
+if testKNN:
+  neigh = KNeighborsRegressor(n_neighbors=2)
+  neigh.fit(X_train, Y_train) 
 
-predictionsKNN = neigh.predict(X_test)
-scoreKNN = neigh.score(X_test, Y_test)
+  predictionsKNN = neigh.predict(X_test)
+  scoreKNN = neigh.score(X_test, Y_test)
 
 
 
 #############################
 #          LinReg           #
 #############################
-linreg = LinearRegression().fit(X_train, Y_train)
+if testLinReg:
+  linreg = LinearRegression().fit(X_train, Y_train)
 
-predictionsLinReg = linreg.predict(X_test)
-scoreReg = linreg.score(X_test, Y_test)
+  predictionsLinReg = linreg.predict(X_test)
+  scoreLinReg = linreg.score(X_test, Y_test)
 
 
 
 #############################
 #       Score Summary       #
 #############################
-print("MLP Accuracy Score: ", score)
+print("MLP Accuracy Score: ", scoreMLP)
 
 print("KNN Accuracy Score: ", scoreKNN)
 
-print("LinReg Accuracy Score: ", scoreReg)
+print("LinReg Accuracy Score: ", scoreLinReg)
 
 
 
