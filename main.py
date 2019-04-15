@@ -8,6 +8,7 @@ import numpy as np # linear algebra
 import os # accessing directory structure
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from sklearn.neural_network import MLPRegressor #For neural net
+from sklearn.linear_model import LinearRegression
 import sys
 
 #######################
@@ -90,43 +91,49 @@ print(X_test)
 
 #X, Y = np.arange(10).reshape((5, 2)), range(5)
 
-# neigh = KNeighborsRegressor(n_neighbors=2)
-# neigh.fit(X, Y) 
-# print(neigh.predict([[0.8]]))
-
 
 #############################
 #            MLP            #
 #############################
-mlp = MLPRegressor(verbose = True, hidden_layer_sizes=(500,500,500,500,500,1000))
+mlp = MLPRegressor(hidden_layer_sizes=(500,500,500,500,500,1000))
 net = mlp.fit(X_train, Y_train)
 
 predictions = net.predict(X_test)
 
 score = net.score(X_test, Y_test)
-print("MLP Accuracy Score: ", score)
-print("MLP Iterations: ", net.n_iter_)
-
 
 
 
 #############################
 #            KNN            #
 #############################
+neigh = KNeighborsRegressor(n_neighbors=2)
+neigh.fit(X_train, Y_train) 
+
+predictionsKNN = neigh.predict(X_test)
+scoreKNN = neigh.score(X_test, Y_test)
+
 
 
 #############################
 #          LinReg           #
 #############################
+linreg = LinearRegression().fit(X_train, Y_train)
+
+predictionsLinReg = linreg.predict(X_test)
+scoreReg = linreg.score(X_test, Y_test)
 
 
 
+#############################
+#       Score Summary       #
+#############################
+print("MLP Accuracy Score: ", score)
+print("MLP Iterations: ", net.n_iter_)
 
+print("KNN Accuracy Score: ", scoreKNN)
 
-
-
-
-
+print("LinReg Accuracy Score: ", scoreReg)
 
 
 
