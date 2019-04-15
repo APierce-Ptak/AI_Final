@@ -103,7 +103,7 @@ net = mlp.fit(X_train, Y_train)
 predictions = net.predict(X_test)
 
 score = net.score(X_test, Y_test)
-
+print("MLP Iterations: ", net.n_iter_)
 
 
 #############################
@@ -131,7 +131,6 @@ scoreReg = linreg.score(X_test, Y_test)
 #       Score Summary       #
 #############################
 print("MLP Accuracy Score: ", score)
-print("MLP Iterations: ", net.n_iter_)
 
 print("KNN Accuracy Score: ", scoreKNN)
 
