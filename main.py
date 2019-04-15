@@ -23,10 +23,12 @@ import sys
 ##########DEBUG VARS
 debug = False
 
-testMLP = False
-testKNN = False
-testLinReg = False
+# If these are false they output fake data
+testMLP = True  
+testKNN = True
+testLinReg = True
 
+# Fake data
 scoreMLP = -999
 scoreKNN = -999
 scoreLinReg = -999
@@ -92,7 +94,7 @@ if debug:
 #            MLP            #
 #############################
 if testMLP:
-  mlp = MLPRegressor(hidden_layer_sizes=(500,500,500,500,500,1000))
+  mlp = MLPRegressor(hidden_layer_sizes=(50,50,550,500,500,1000),activation="identity", solver="sgd",learning_rate="adaptive",early_stopping=False)
   net = mlp.fit(X_train, Y_train)
 
   predictions = net.predict(X_test)
@@ -105,7 +107,7 @@ if testMLP:
 #            KNN            #
 #############################
 if testKNN:
-  neigh = KNeighborsRegressor(n_neighbors=2)
+  neigh = KNeighborsRegressor(n_neighbors=7)
   neigh.fit(X_train, Y_train) 
 
   predictionsKNN = neigh.predict(X_test)
