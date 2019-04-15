@@ -46,7 +46,7 @@ dataset = np.delete(dataset, 0, 1)
 if debug: print(dataset)
 
 # Print the shape of the dataset
-print(dataset.shape)
+if debug: print(dataset.shape)
 
 #Left out serial number and acceptance
 labels = ["GRE Score","TOEFL Score","University Rating","SOP","LOR" ,"CGPA","Research"]
