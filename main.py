@@ -94,7 +94,7 @@ if debug:
 #            MLP            #
 #############################
 if testMLP:
-  mlp = MLPRegressor(hidden_layer_sizes=(200,),activation="identity", solver="sgd",learning_rate="adaptive",alpha=0.97,early_stopping=False,max_iter = 500, verbose=True,random_state=42)
+  mlp = MLPRegressor(hidden_layer_sizes=(50,55,91),activation="identity", solver="sgd",learning_rate="adaptive",alpha=0.99999999,early_stopping=False,max_iter = 500,random_state=42)
   net = mlp.fit(X_train, Y_train)
 
   predictions = net.predict(X_test)
@@ -107,7 +107,7 @@ if testMLP:
 #            KNN            #
 #############################
 if testKNN:
-  neigh = KNeighborsRegressor(n_neighbors=7)
+  neigh = KNeighborsRegressor(n_neighbors=8)
   neigh.fit(X_train, Y_train)
 
   predictionsKNN = neigh.predict(X_test)
