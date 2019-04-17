@@ -10,6 +10,8 @@ import os # accessing directory structure
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from sklearn.neural_network import MLPRegressor #For neural net
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import GridSearchCV
+from sklearn import svm, datasets
 
 import sys
 
@@ -134,3 +136,15 @@ print("MLP Accuracy Score:\t", scoreMLP)
 print("KNN Accuracy Score:\t", scoreKNN)
 
 print("LinReg Accuracy Score:\t", scoreLinReg)
+
+
+
+#############################
+#        GridSelect         #
+#############################
+parameters = {}
+clf = GridSearchCV()
+
+
+
+
