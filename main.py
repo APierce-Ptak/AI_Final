@@ -146,6 +146,4 @@ print("LinReg Accuracy Score:\t", scoreLinReg)
 parameters = {}
 clf = GridSearchCV()
 
-
-
-
+print("LinReg Accuracy Score:\t", scoreLinReg)
