@@ -1,6 +1,7 @@
 from __future__ import print_function
 from mpl_toolkits.mplot3d import Axes3D
 from sklearn.preprocessing import StandardScaler
+from sklearn import svm
 from sklearn import preprocessing
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split
@@ -163,8 +164,21 @@ KNN_Parameters = {
 LinReg_Parameters = {
   "NONE"
 }
-clf = GridSearchCV()
 
+#svc = svm.SVC(gamma="scale")
+#mlp_clf = GridSearchCV(MLP_Parameters, cv=5)
+#mlp_clf.fit(X_train, Y_train)
+#print("BEST PARAMS FOR MLP:")
+#print(mlp_clf.best_params_)
+#print("BEST SCORE FOR MLP:")
+#print(mlp_clf.best_score_)
+
+#knn_clf = GridSearchCV(KNN_Parameters, cv=5)
+#knn_clf.fit(X_train, Y_train)
+#print("BEST PARAMS FOR KNN:")
+#print(knn_clf.best_params_)
+#print("BEST SCORE FOR KNN:")
+#print(knn_clf.best_score_)
 
 
 
