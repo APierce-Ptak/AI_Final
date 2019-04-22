@@ -96,7 +96,7 @@ if debug:
 #            MLP            #
 #############################
 if testMLP:
-  mlp = MLPRegressor(hidden_layer_sizes=(50,55,91),activation="identity", solver="sgd",learning_rate="adaptive",alpha=0.99999999,early_stopping=False,max_iter = 500,random_state=42)
+  mlp = MLPRegressor(hidden_layer_sizes=(46,54,105),activation="identity", solver="sgd",learning_rate="adaptive",alpha=0.9999999,early_stopping=False,max_iter = 500,random_state=42)
   net = mlp.fit(X_train, Y_train)
 
   predictions = net.predict(X_test)
@@ -105,9 +105,10 @@ if testMLP:
   print("MLP Iterations: ", net.n_iter_)
 
 
-#############################
-#            KNN            #
-#############################
+
+############################# 
+#            KNN            # 
+############################# 
 if testKNN:
   neigh = KNeighborsRegressor(n_neighbors=8)
   neigh.fit(X_train, Y_train)
@@ -145,6 +146,7 @@ print("LinReg Accuracy Score:\t", scoreLinReg)
 parameters = {}
 clf = GridSearchCV()
 
+<<<<<<< HEAD
 
 
 
@@ -167,3 +169,6 @@ clf = GridSearchCV()
 
 
 
+=======
+print("LinReg Accuracy Score:\t", scoreLinReg)
+>>>>>>> e21821a73c8d6a6f5f40c03fa1b7e12173e5ed37
