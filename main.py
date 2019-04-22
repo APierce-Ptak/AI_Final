@@ -143,7 +143,26 @@ print("LinReg Accuracy Score:\t", scoreLinReg)
 #############################
 #        GridSelect         #
 #############################
-parameters = {}
+MLP_Parameters = {
+  'hidden_layer_sizes': [(30,30,30),(50,50,50),(70,70,70),(90,90,90),(150,150,150),(250,250,250),(50,50,50,50)],
+  'activation': ['relu','tanh','logistic','identity'],
+  'solver': ['adam','sgd','lbfgs'],
+  'alpha': [0.0001, 0.0005, 0.001, 0.01, 0.05, 0.1],
+  'learning_rate': ['constant', 'invscaling', 'adaptive'],
+  'epsilon': [0.00000001, 0.0000001, 0.000001, 0.00001],
+}
+
+KNN_Parameters = {
+  'n_neighbors': [1,2,3,4,5,6,7,8,9,10],
+  'weights': ['uniform', 'distance'],
+  'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
+  'leaf_size': [15, 30, 50, 100],
+  'p': [1,1.5,2],
+}
+
+LinReg_Parameters = {
+  "NONE"
+}
 clf = GridSearchCV()
 
 
