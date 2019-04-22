@@ -146,7 +146,6 @@ print("LinReg Accuracy Score:\t", scoreLinReg)
 parameters = {}
 clf = GridSearchCV()
 
-<<<<<<< HEAD
 
 
 
@@ -161,14 +160,3 @@ clf = GridSearchCV()
 
 
 
-
-
-
-
-
-
-
-
-=======
-print("LinReg Accuracy Score:\t", scoreLinReg)
->>>>>>> e21821a73c8d6a6f5f40c03fa1b7e12173e5ed37
