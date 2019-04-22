@@ -135,7 +135,6 @@ print("MLP Accuracy Score:\t", scoreMLP)
 
 print("KNN Accuracy Score:\t", scoreKNN)
 
-<<<<<<< HEAD
 print("LinReg Accuracy Score:\t", scoreLinReg)
 
 
@@ -149,6 +148,22 @@ clf = GridSearchCV()
 
 
 
-=======
-print("LinReg Accuracy Score:\t", scoreLinReg)
->>>>>>> 4f6cef22a067f0d9fa9868ac37c7da0f52d259a2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
