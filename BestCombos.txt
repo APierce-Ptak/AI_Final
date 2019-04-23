@@ -1,0 +1,4 @@
+BEST PARAMS FOR KNN:
+{'n_neighbors': 5, 'weights': 'distance', 'leaf_size': 15, 'algorithm': 'auto', 'p': 2}
+BEST SCORE FOR KNN:
+0.780914602446
