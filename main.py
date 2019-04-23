@@ -148,9 +148,10 @@ MLP_Parameters = {
   'hidden_layer_sizes': [(30,30,30),(50,50,50),(70,70,70),(90,90,90),(150,150,150),(250,250,250),(50,50,50,50)],
   'activation': ['relu','tanh','logistic','identity'],
   'solver': ['adam','sgd','lbfgs'],
-  'alpha': [0.0001, 0.0005, 0.001, 0.01, 0.05, 0.1],
+  'alpha': [0.0001, 0.0005],
   'learning_rate': ['constant', 'invscaling', 'adaptive'],
-  'epsilon': [0.00000001, 0.0000001, 0.000001, 0.00001],
+  'epsilon': [0.00000001, 0.0000001],
+  'max_iter': [400,600],
 }
 
 KNN_Parameters = {
@@ -165,20 +166,19 @@ LinReg_Parameters = {
   "NONE"
 }
 
-#svc = svm.SVC(gamma="scale")
-#mlp_clf = GridSearchCV(MLP_Parameters, cv=5)
+#mlp_clf = GridSearchCV(MLPRegressor(verbose=True),MLP_Parameters, cv=5)
 #mlp_clf.fit(X_train, Y_train)
 #print("BEST PARAMS FOR MLP:")
 #print(mlp_clf.best_params_)
 #print("BEST SCORE FOR MLP:")
 #print(mlp_clf.best_score_)
 
-#knn_clf = GridSearchCV(KNN_Parameters, cv=5)
-#knn_clf.fit(X_train, Y_train)
-#print("BEST PARAMS FOR KNN:")
-#print(knn_clf.best_params_)
-#print("BEST SCORE FOR KNN:")
-#print(knn_clf.best_score_)
+knn_clf = GridSearchCV(KNeighborsRegressor(),KNN_Parameters, cv=5)
+knn_clf.fit(X_train, Y_train)
+print("BEST PARAMS FOR KNN:")
+print(knn_clf.best_params_)
+print("BEST SCORE FOR KNN:")
+print(knn_clf.best_score_)
 
 
 
