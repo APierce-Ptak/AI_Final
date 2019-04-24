@@ -2,3 +2,22 @@ BEST PARAMS FOR KNN:
 {'n_neighbors': 5, 'weights': 'distance', 'leaf_size': 15, 'algorithm': 'auto', 'p': 2}
 BEST SCORE FOR KNN:
 0.780914602446
+
+
+BEST PARAMS FOR MLP:
+{'activation': 'logistic', 'max_iter': 600, 'solver': 'lbfgs', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (30, 30, 30)}
+BEST SCORE FOR MLP:
+0.806541979087
+
+
+
+BEST PARAMS FOR MLP:
+{'hidden_layer_sizes': (150, 150, 150), 'epsilon': 1e-08, 'activation': 'identity', 'max_iter': 400, 'alpha': 0.0001, 'solver': 'lbfgs', 'learning_rate': 'constant'}
+BEST SCORE FOR MLP:
+0.80874020525
+
+
+
+MLP Accuracy Score:      0.816312343249
+KNN Accuracy Score:      0.766019475366
+LinReg Accuracy Score:   0.816321301606

@@ -97,7 +97,7 @@ if debug:
 #            MLP            #
 #############################
 if testMLP:
-  mlp = MLPRegressor(hidden_layer_sizes=(46,54,105),activation="identity", solver="sgd",learning_rate="adaptive",alpha=0.9999999,early_stopping=False,max_iter = 500,random_state=42)
+  mlp = MLPRegressor(hidden_layer_sizes=(150,150,150),activation="identity", solver="lbfgs",learning_rate="constant",alpha=0.0001,max_iter = 400)
   net = mlp.fit(X_train, Y_train)
 
   predictions = net.predict(X_test)
@@ -111,7 +111,7 @@ if testMLP:
 #            KNN            # 
 ############################# 
 if testKNN:
-  neigh = KNeighborsRegressor(n_neighbors=5, wieghts='distance', leaf_size = 15, algorithm = 'auto', p = 2) #from gridsearch
+  neigh = KNeighborsRegressor(n_neighbors=5, weights='distance', leaf_size = 15, algorithm = 'auto', p = 2) #from gridsearch
   neigh.fit(X_train, Y_train)
 
   predictionsKNN = neigh.predict(X_test)
@@ -145,12 +145,10 @@ print("LinReg Accuracy Score:\t", scoreLinReg)
 #        GridSelect         #
 #############################
 MLP_Parameters = {
-  'hidden_layer_sizes': [(30,30,30),(50,50,50),(70,70,70),(90,90,90),(150,150,150),(250,250,250),(50,50,50,50)],
-  'activation': ['relu','tanh','logistic','identity'],
+  'hidden_layer_sizes': [(30,30,30),(50,50,50),(70,70,70),(90,90,90),(250,250,250),(50,50,50,50)],
+  'activation': ['relu','tanh','logistic'],
   'solver': ['adam','sgd','lbfgs'],
-  'alpha': [0.0001, 0.0005],
   'learning_rate': ['constant', 'invscaling', 'adaptive'],
-  'epsilon': [0.00000001, 0.0000001],
   'max_iter': [400,600],
 }
 
@@ -166,19 +164,19 @@ LinReg_Parameters = {
   "NONE"
 }
 
-#mlp_clf = GridSearchCV(MLPRegressor(verbose=True),MLP_Parameters, cv=5)
+#mlp_clf = GridSearchCV(MLPRegressor(),MLP_Parameters, cv=5)
 #mlp_clf.fit(X_train, Y_train)
 #print("BEST PARAMS FOR MLP:")
 #print(mlp_clf.best_params_)
 #print("BEST SCORE FOR MLP:")
 #print(mlp_clf.best_score_)
 
-knn_clf = GridSearchCV(KNeighborsRegressor(),KNN_Parameters, cv=5)
-knn_clf.fit(X_train, Y_train)
-print("BEST PARAMS FOR KNN:")
-print(knn_clf.best_params_)
-print("BEST SCORE FOR KNN:")
-print(knn_clf.best_score_)
+#knn_clf = GridSearchCV(KNeighborsRegressor(),KNN_Parameters, cv=5)
+#knn_clf.fit(X_train, Y_train)
+#print("BEST PARAMS FOR KNN:")
+#print(knn_clf.best_params_)
+#print("BEST SCORE FOR KNN:")
+#print(knn_clf.best_score_)
 
 
 
