@@ -111,7 +111,7 @@ if testMLP:
 #            KNN            # 
 ############################# 
 if testKNN:
-  neigh = KNeighborsRegressor(n_neighbors=8, weights='distance', leaf_size = 15, algorithm = 'auto', p = 2) #from gridsearch
+  neigh = KNeighborsRegressor(n_neighbors=5, weights='distance', leaf_size = 15, algorithm = 'auto', p = 2) #from gridsearch
   neigh.fit(X_train, Y_train)
 
   predictionsKNN = neigh.predict(X_test)
