@@ -5,17 +5,9 @@ BEST SCORE FOR KNN:
 
 
 BEST PARAMS FOR MLP:
-{'activation': 'logistic', 'max_iter': 600, 'solver': 'lbfgs', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (30, 30, 30)}
+{'hidden_layer_sizes': (90, 90, 90), 'epsilon': 1e-07, 'activation': 'tanh', 'max_iter': 200, 'alpha': 0.1, 'solver': 'lbfgs', 'learning_rate': 'invscaling'}
 BEST SCORE FOR MLP:
-0.806541979087
-
-
-
-BEST PARAMS FOR MLP:
-{'hidden_layer_sizes': (150, 150, 150), 'epsilon': 1e-08, 'activation': 'identity', 'max_iter': 400, 'alpha': 0.0001, 'solver': 'lbfgs', 'learning_rate': 'constant'}
-BEST SCORE FOR MLP:
-0.80874020525
-
+0.813821066943
 
 
 MLP Accuracy Score:      0.816312343249
