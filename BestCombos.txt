@@ -13,3 +13,6 @@ BEST SCORE FOR MLP:
 MLP Accuracy Score:      0.816312343249
 KNN Accuracy Score:      0.766019475366
 LinReg Accuracy Score:   0.816321301606
+
+mlp = MLPRegressor(hidden_layer_sizes=(46,54,105),activation="identity", solver="sgd",learning_rate="adaptive",alpha=0.9999999,early_stopping=False,max_iter = 500,random_state=42)
+MLP Accuracy Score:	 0.823074137403941

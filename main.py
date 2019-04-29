@@ -97,7 +97,7 @@ if debug:
 #            MLP            #
 #############################
 if testMLP:
-  mlp = MLPRegressor(hidden_layer_sizes=(150,150,150),activation="identity", solver="lbfgs",learning_rate="constant",alpha=0.0001,max_iter = 400)
+  mlp = MLPRegressor(hidden_layer_sizes=(46,54,105),activation="identity", solver="sgd",learning_rate="adaptive",alpha=0.9999999,early_stopping=False,max_iter = 500,random_state=42)
   net = mlp.fit(X_train, Y_train)
 
   predictions = net.predict(X_test)
